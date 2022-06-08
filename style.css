@@ -1,0 +1,93 @@
+:root{
+  --hue: 194;
+  --first-color: hsl(240, 6%, 21%);
+  --bg-color: hsl(var(--hue), 97%, 31%);
+  --font-main: 'Roboto', sans-serif;
+
+  font-size: 66.5%;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body{
+  font-family: var(--font-main);
+}
+
+
+
+.paige {
+  width: 100%;
+  display: grid;
+  height: 100vh;
+}
+
+main {
+  margin: 5rem auto;
+  justify-self: center;
+  align-self: center;
+  display: grid;
+  gap: 10rem;
+  grid-template-columns: 1fr  ;
+}
+
+main section,
+aside {
+  display: grid;
+}
+
+main section .timer{
+  font-style: normal;
+  font-weight: 500;
+  font-size: clamp(4rem ,6rem + 5vw ,6rem + 10vw);
+  line-height: 14.8rem;
+
+  text-transform: uppercase;
+  
+  color: var(--first-color);
+
+  justify-self: center;
+  align-self: flex-end;
+}
+
+main section .buttons-timer{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: clamp(1rem, 1rem ,2rem );
+  justify-self: center;
+
+}
+
+main section .buttons-timer button,
+main aside button{
+  border: none;
+  background: transparent;
+
+  width: 100%;
+  cursor: pointer;
+}
+
+
+.hide{
+  display: none;
+}
+
+main section .buttons-timer button svg {
+  width: clamp(3.5rem,4rem,5rem);
+}
+
+button.selected path.bg{
+  fill: var(--bg-color);
+}
+
+button.selected path.ft{
+  fill: #FFF;
+}
+
+aside{
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
