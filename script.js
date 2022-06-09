@@ -41,7 +41,7 @@ function addMinutes(){
   if(Number(minutes.textContent) < 60){
     minutes.textContent = String(Number(minutes.textContent) + 5).padStart(2, '0');
   }else {
-    minutes.textContent = 00;
+    minutes.textContent = String(Number(5)).padStart(2, '0');
   }
 };
 
@@ -50,7 +50,7 @@ function decMinutes(){
     minutes.textContent = String(Number(minutes.textContent) - 5).padStart(2, '0');
 
   }else{
-    alert('Opção inválida')
+    minutes.textContent = String(Number(60)).padStart(2, '0');
   }
 };
 
@@ -64,6 +64,7 @@ function counter(){
     }else {
       if(Number(minutes.textContent) == 0 && Number(second.textContent) == 0){
         reset();
+        return;
       }else{
         second.textContent =  String(Number(second.textContent) - 1).padStart(2,'0');
 
