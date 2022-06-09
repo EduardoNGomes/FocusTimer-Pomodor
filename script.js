@@ -4,51 +4,75 @@ const buttonStop = document.querySelector('.stop');
 const buttonPlus = document.querySelector('.plus');
 const buttonMinus = document.querySelector('.minus');
 
-let minutes = document.querySelector('#minutes');
-let second = document.querySelector('#seconds');
+const buttonFlorest = document.querySelector('.florest');
+const buttonRain = document.querySelector('.rain');
+const buttonCoffe = document.querySelector('.coffe');
+const buttonFireplace = document.querySelector('.fireplace');
+
+let minutes = document.querySelector('.minutes');
+let second = document.querySelector('.seconds');
 
 let time;
 
+let newMinutes = Number(minutes.textContent)
 
+function changeStyle(buttonSelected,buttonNone1,buttonNone2,buttonNone3){
+  buttonSelected.classList.add('selected');
+  buttonNone1.classList.remove('selected');
+  buttonNone2.classList.remove('selected');
+  buttonNone3.classList.remove('selected');
 
+};
 
 
 
 function reset(){
-  buttonPlay.classList.toggle('hide');
-  buttonPause.classList.toggle('hide');
+  clearTimeout(time)
+  buttonPlay.classList.remove('hide')
+  buttonPause.classList.add('hide')
 }
 
-function startTimer(){
-  reset();
+function startOrPauseTimer(){
+  buttonPlay.classList.toggle('hide');
+  buttonPause.classList.toggle('hide');
 };
 
 function addMinutes(){
-  minutes.textContent =  Number(minutes.textContent) + 5;
+  if(Number(minutes.textContent) < 60){
+    minutes.textContent = String(Number(minutes.textContent) + 5).padStart(2, '0');
+  }else {
+    minutes.textContent = 00;
+  }
 };
 
 function decMinutes(){
-  minutes.textContent =  Number(minutes.textContent) - 5;
+  if(minutes.textContent > 0){
+    minutes.textContent = String(Number(minutes.textContent) - 5).padStart(2, '0');
+
+  }else{
+    alert('Opção inválida')
+  }
 };
 
 function counter(){
-    time = setTimeout(() =>{
+  time = setTimeout(() =>{
     
     if(Number(second.textContent) == 0 && Number(minutes.textContent) > 0){
       second.textContent = 5
-      second.textContent =  Number(second.textContent) - 1;
-      minutes.textContent = Number(minutes.textContent) - 1;
+      second.textContent =  String(Number(second.textContent) - 1).padStart(2,'0');
+      minutes.textContent = String(Number(minutes.textContent) - 1).padStart(2,'0');
     }else {
       if(Number(minutes.textContent) == 0 && Number(second.textContent) == 0){
-        clearTimeout(time)
+        reset();
       }else{
-        second.textContent =  Number(second.textContent) - 1;
+        second.textContent =  String(Number(second.textContent) - 1).padStart(2,'0');
+
       }
     };
     
     counter();
   },1000);
-
+  
 }
 
 
@@ -57,21 +81,20 @@ function counter(){
 
 
 buttonPlay.addEventListener('click', () =>{
-  startTimer();
+  startOrPauseTimer();
   counter()
 });
 
 buttonPause.addEventListener('click', () =>{
-  startTimer();
+  startOrPauseTimer();
   clearTimeout(time)
-
+  
 });
 
 buttonStop.addEventListener('click', ()=>{
-  clearTimeout(time)
   reset();
-  minutes.textContent = minutes.textContent;
-  second.textContent = second.textContent; 
+  minutes.textContent = String(newMinutes).padStart(2,'0');
+  second.textContent = String(0).padStart(2,'0'); 
 })
 
 buttonPlus.addEventListener('click', () =>{
@@ -81,3 +104,23 @@ buttonPlus.addEventListener('click', () =>{
 buttonMinus.addEventListener('click', () =>{
   decMinutes();
 })
+
+
+
+buttonFireplace.addEventListener('click', ()=>{
+  changeStyle(buttonFireplace,buttonCoffe,buttonFlorest,buttonRain);
+});
+
+buttonCoffe.addEventListener('click', ()=>{
+  changeStyle(buttonCoffe,buttonFireplace,buttonFlorest,buttonRain);
+});
+
+buttonFlorest.addEventListener('click', ()=>{
+  changeStyle(buttonFlorest,buttonFireplace,buttonCoffe,buttonRain);
+});
+
+buttonRain.addEventListener('click', ()=>{
+  changeStyle(buttonRain,buttonFireplace,buttonCoffe,buttonFlorest);
+});
+
+
