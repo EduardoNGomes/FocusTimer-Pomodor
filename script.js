@@ -17,7 +17,7 @@ let audio;
 let newMinutes = Number(minutes.textContent)
 
 
-function playAudio(nameAudio,){
+function playAudio(nameAudio){
   
   if(!audio){
     audio = new Audio('./audio/'+ nameAudio);
