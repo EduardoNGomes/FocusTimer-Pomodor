@@ -13,11 +13,30 @@ let minutes = document.querySelector('.minutes');
 let second = document.querySelector('.seconds');
 
 let time;
-
+let audio;
 let newMinutes = Number(minutes.textContent)
 
+
+function playAudio(nameAudio,){
+  
+  if(!audio){
+    audio = new Audio('./audio/'+ nameAudio);
+    audio.play();
+  } else {
+      audio.pause();
+      audio = new Audio('./audio/'+ nameAudio);
+      audio.play();
+  }  
+  audio.loop = true;
+}
+
+function stopAudio(){
+  audio.pause();
+  audio = !audio;
+}
+
 function changeStyle(buttonSelected,buttonNone1,buttonNone2,buttonNone3){
-  buttonSelected.classList.add('selected');
+  buttonSelected.classList.toggle('selected');
   buttonNone1.classList.remove('selected');
   buttonNone2.classList.remove('selected');
   buttonNone3.classList.remove('selected');
@@ -110,18 +129,44 @@ buttonMinus.addEventListener('click', () =>{
 
 buttonFireplace.addEventListener('click', ()=>{
   changeStyle(buttonFireplace,buttonCoffe,buttonFlorest,buttonRain);
+
+  if(!buttonFireplace.classList.contains('selected')){
+    stopAudio();
+  }else{
+    playAudio('Lareira.wav');
+  }
+
 });
 
 buttonCoffe.addEventListener('click', ()=>{
+
   changeStyle(buttonCoffe,buttonFireplace,buttonFlorest,buttonRain);
+  if(!buttonCoffe.classList.contains('selected')){
+    stopAudio();
+  }else{
+    playAudio('Cafeteria.wav');
+  }
 });
 
 buttonFlorest.addEventListener('click', ()=>{
+
   changeStyle(buttonFlorest,buttonFireplace,buttonCoffe,buttonRain);
+  if(!buttonFlorest.classList.contains('selected')){
+    stopAudio();
+  }else{
+    playAudio('Floresta.wav');
+  }
 });
 
 buttonRain.addEventListener('click', ()=>{
+
   changeStyle(buttonRain,buttonFireplace,buttonCoffe,buttonFlorest);
+
+  if(!buttonRain.classList.contains('selected')){
+    stopAudio();
+  }else{
+    playAudio('Chuva.wav');
+  }
 });
 
 
