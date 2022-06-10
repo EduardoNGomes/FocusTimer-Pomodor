@@ -89,5 +89,15 @@ button.selected path.ft{
 
 aside{
   grid-template-columns: 1fr 1fr;
-  gap: 1rem;
+  gap: clamp(.5rem,1rem,3.2rem);
+  max-width: 30rem;
+}
+
+
+@media (min-width:768px) {
+  main{
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(10rem,12rem , 19.2rem);
+  }
+
 }
