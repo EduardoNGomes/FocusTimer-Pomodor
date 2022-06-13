@@ -18,25 +18,65 @@ body{
 }
 
 
-
 .page {
+  max-width: 1600px;
+  margin: 0 auto;
   width: 100%;
   display: grid;
   height: 100vh;
 }
 
 main {
-  margin: 5rem auto;
+  margin: 2rem auto;
   justify-self: center;
   align-self: center;
   display: grid;
-  gap: 10rem;
-  grid-template-columns: 1fr  ;
+  grid-template-areas: 
+  'dark dark'
+  'time time'
+  'buttons buttons'  ;
 }
+
+main:first-child{
+  gap: 1.5rem;
+}
+
+.dark-mod {
+  grid-area: dark;
+  width: 30%;
+  margin: 0 auto;
+}
+
+.dark-mod button {
+  padding: 1rem;
+}
+/*  START DARK MOD */
+.dark-theme-bg-text-body{
+  background-color: black;
+  color: white;
+}
+
+.dark-theme-buttons-bg path.bg{
+  fill: #29292E;
+}
+
+
+.dark-theme-buttons path{
+  fill: #FFF;
+}
+
+
+
+/* END DARK MOD */
 
 main section,
 aside {
   display: grid;
+}
+
+
+main section{
+  grid-area: time;
 }
 
 main section .timer{
@@ -62,7 +102,8 @@ main section .buttons-timer{
 }
 
 main section .buttons-timer button,
-main aside button{
+main aside button,
+.dark-mod button{
   border: none;
   background: transparent;
 
@@ -88,16 +129,30 @@ button.selected path.ft{
 }
 
 aside{
+  grid-area: buttons;
+
   grid-template-columns: 1fr 1fr;
   gap: clamp(.5rem,1rem,3.2rem);
   max-width: 30rem;
 }
 
 
+
+
 @media (min-width:768px) {
   main{
-    grid-template-columns: 1fr 1fr;
+    margin: 0 auto;
+    width: 100%;
+    grid-template-areas: 
+    ' .   dark '
+    'time  buttons';
     gap: clamp(10rem,12rem , 19.2rem);
   }
 
+  
+  .dark-mod {
+    display: grid;
+    justify-self: flex-end;
+    margin: 0  0 10rem;
+  }
 }
