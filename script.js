@@ -14,7 +14,7 @@ let second = document.querySelector('.seconds');
 
 let time;
 let audio;
-let newMinutes = Number(minutes.textContent)
+let originMinutes = Number(minutes.textContent)
 
 
 function playAudio(nameAudio,){
@@ -113,7 +113,7 @@ buttonPause.addEventListener('click', () =>{
 
 buttonStop.addEventListener('click', ()=>{
   reset();
-  minutes.textContent = String(newMinutes).padStart(2,'0');
+  minutes.textContent = String(originMinutes).padStart(2,'0');
   second.textContent = String(0).padStart(2,'0'); 
 })
 
