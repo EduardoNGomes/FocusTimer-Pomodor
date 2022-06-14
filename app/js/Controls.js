@@ -2,24 +2,42 @@ export default function Controls({
   audio,
   buttonPause,
   buttonPlay,
+  buttonMinus,
+  buttonPlus,
+  buttonStop,
+  buttonDark,
+  buttonLight,
+  buttonFlorest,
+  buttonRain,
+  buttonCoffe,
+  buttonFireplace,
   minutes,
   second,
-  time
+  time,
+  vol
 }){
-  function playAudio(nameAudio){
+  function playAudio(nameAudio,nameVolume){
     
     if(!audio){
+      vol = document.querySelector('.volume-'+nameVolume);
       audio = new Audio('../app/audio/'+ nameAudio);
       audio.play();
+      vol.addEventListener('input',()=>{
+        audio.volume = Number(vol.value)/100;
+      })
     } else {
         audio.pause();
+        vol.value = 50;
         audio = new Audio('../app/audio/'+ nameAudio);
+        vol = document.querySelector('.volume-'+nameVolume);
         audio.play();
     }  
     audio.loop = true;
   }
   
   function stopAudio(){
+    vol.value = 50;
+    vol = !vol;
     audio.pause();
     audio = !audio;
   }
@@ -85,6 +103,41 @@ export default function Controls({
     },1000);
     
   }
+  function darkOrLight(){
+    buttonDark.classList.toggle('hide');
+    buttonLight.classList.toggle('hide');
+  
+    document.querySelector('body').classList.toggle('dark-theme-bg-text-body');
+  
+    //COlOR DISPLAY
+    minutes.classList.toggle('dark-theme-bg-text-body');
+    document.querySelector('.dots').classList.toggle('dark-theme-bg-text-body')
+    second.classList.toggle('dark-theme-bg-text-body');
+
+    //TIMER-BUTTONS COLORS
+    buttonPlay.classList.toggle('dark-theme-buttons');
+    buttonPause.classList.toggle('dark-theme-buttons');
+    buttonStop.classList.toggle('dark-theme-buttons');
+    buttonPlus.classList.toggle('dark-theme-buttons');
+    buttonMinus.classList.toggle('dark-theme-buttons');
+
+    //SONG-BUTTONS COLLORS
+
+    buttonFlorest.classList.toggle('dark-theme-buttons');
+    buttonFlorest.classList.toggle('dark-theme-buttons-bg');
+
+    buttonRain.classList.toggle('dark-theme-buttons');
+    buttonRain.classList.toggle('dark-theme-buttons-bg');
+
+    buttonCoffe.classList.toggle('dark-theme-buttons');
+    buttonCoffe.classList.toggle('dark-theme-buttons-bg');
+
+    buttonFireplace.classList.toggle('dark-theme-buttons');
+    buttonFireplace.classList.toggle('dark-theme-buttons-bg');
+
+    
+  
+  }
   return {
     counter,
     decMinutes,
@@ -93,7 +146,8 @@ export default function Controls({
     reset,
     startOrPauseTimer,
     stopAudio,
-    changeStyle
+    changeStyle,
+    darkOrLight
   }
 
 }

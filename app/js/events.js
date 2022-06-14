@@ -8,6 +8,8 @@ import {
   buttonPlus,
   buttonRain,
   buttonStop,
+  buttonDark,
+  buttonLight
 } from './elements.js';
 
 export default function Events({
@@ -47,7 +49,7 @@ export default function Events({
     if(!buttonFireplace.classList.contains('selected')){
       controls.stopAudio();
     }else{
-      controls.playAudio('Lareira.wav');
+      controls.playAudio('Lareira.wav','fireplace');
     }
   
   });
@@ -58,7 +60,7 @@ export default function Events({
     if(!buttonCoffe.classList.contains('selected')){
       controls.stopAudio();
     }else{
-      controls.playAudio('Cafeteria.wav');
+      controls.playAudio('Cafeteria.wav','coffe');
     }
   });
   
@@ -69,7 +71,7 @@ export default function Events({
     if(!buttonFlorest.classList.contains('selected')){
       controls.stopAudio();
     }else{
-      controls.playAudio('Floresta.wav');
+      controls.playAudio('Floresta.wav','florest');
     }
   });
   
@@ -80,10 +82,20 @@ export default function Events({
     if(!buttonRain.classList.contains('selected')){
       controls.stopAudio();
     }else{
-      controls.playAudio('Chuva.wav');
+      controls.playAudio('Chuva.wav','rain');
     }
   });
 
+  buttonDark.addEventListener('click', ()=>{
+    controls.darkOrLight();
+  });
+  
+  buttonLight.addEventListener('click', ()=>{
+    controls.darkOrLight();
+  });
+
+  
+  
   
 
 }

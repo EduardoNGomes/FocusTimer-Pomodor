@@ -9,11 +9,19 @@ const buttonRain = document.querySelector('.rain');
 const buttonCoffe = document.querySelector('.coffe');
 const buttonFireplace = document.querySelector('.fireplace');
 
+const buttonDark = document.querySelector('.button-dark');
+const buttonLight = document.querySelector('.button-light');
+
+//const buttonSound = document.querySelectorAll('.volume');
+//alert(buttonSound.textContent)
+
+
 let minutes = document.querySelector('.minutes');
 let second = document.querySelector('.seconds');
 
 let time;
 let audio;
+let vol;
 let originMinutes = Number(minutes.textContent)
 
 export {
@@ -30,5 +38,8 @@ export {
   second,
   time,
   audio,
-  originMinutes
+  vol,
+  originMinutes,
+  buttonDark,
+  buttonLight
 };
