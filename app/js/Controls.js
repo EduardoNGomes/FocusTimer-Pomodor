@@ -86,7 +86,7 @@ export default function Controls({
     time = setTimeout(() =>{
       
       if(Number(second.textContent) == 0 && Number(minutes.textContent) > 0){
-        second.textContent = 60;
+        second.textContent = 60
         second.textContent =  String(Number(second.textContent) - 1).padStart(2,'0');
         minutes.textContent = String(Number(minutes.textContent) - 1).padStart(2,'0');
       }else {
