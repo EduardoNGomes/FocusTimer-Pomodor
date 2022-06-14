@@ -9,4 +9,4 @@ Pomodoro app proposed by Rocketseat challenge
 ![Desktop version-dark](https://user-images.githubusercontent.com/93016740/173703191-305be535-9e97-431b-8b64-2348dfbc8b30.png)
 ![Desktop version-light](https://user-images.githubusercontent.com/93016740/173703236-33123f11-87f0-484a-b9ea-d835508a790a.png)
 
--Try: https://eduardongomes.github.io/FocusTimer-Pomodor/
+-Try:  https://eduardongomes.github.io/FocusTimer-Pomodor/
