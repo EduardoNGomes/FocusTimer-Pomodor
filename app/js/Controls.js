@@ -19,7 +19,7 @@ export default function Controls({
 	function playAudio(nameAudio, nameVolume) {
 		if (!audio) {
 			vol = document.querySelector('.volume-' + nameVolume)
-			audio = new Audio('./../app/audio/' + nameAudio)
+			audio = new Audio('../audio/' + nameAudio)
 			audio.play()
 			vol.addEventListener('input', () => {
 				audio.volume = Number(vol.value) / 100
@@ -27,7 +27,7 @@ export default function Controls({
 		} else {
 			audio.pause()
 			vol.value = 50
-			audio = new Audio('./../app/audio/' + nameAudio)
+			audio = new Audio('../audio/' + nameAudio)
 			vol = document.querySelector('.volume-' + nameVolume)
 			audio.play()
 		}
