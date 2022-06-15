@@ -17,10 +17,9 @@ export default function Controls({
 	vol
 }) {
 	function playAudio(nameAudio, nameVolume) {
-		let path = './app/audio/'
 		if (!audio) {
 			vol = document.querySelector('.volume-' + nameVolume)
-			audio = new Audio(path + nameAudio)
+			audio = new Audio('./FocusTimer-Pomodor/app/audio/' + nameAudio)
 			audio.play()
 			vol.addEventListener('input', () => {
 				audio.volume = Number(vol.value) / 100
@@ -28,7 +27,7 @@ export default function Controls({
 		} else {
 			audio.pause()
 			vol.value = 50
-			audio = new Audio(path + nameAudio)
+			audio = new Audio('./FocusTimer-Pomodor/app/audio/' + nameAudio)
 			vol = document.querySelector('.volume-' + nameVolume)
 			audio.play()
 		}
