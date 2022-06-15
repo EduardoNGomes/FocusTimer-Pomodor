@@ -20,7 +20,7 @@ export default function Controls({
     
     if(!audio){
       vol = document.querySelector('.volume-'+nameVolume);
-      audio = new Audio('../app/audio/'+ nameAudio);
+      audio = new Audio('./app/audio/'+ nameAudio);
       audio.play();
       vol.addEventListener('input',()=>{
         audio.volume = Number(vol.value)/100;
